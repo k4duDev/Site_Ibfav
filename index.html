@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +40,7 @@
       <a href="https://instagram.com/ibfavnilopolis" target="_blank">
         <i class="fab fa-instagram"></i> Instagram
       </a>
-      <a href="https://www.youtube.com/@IBFAVNilopolis" target="_blank">
+      <a href="https://www.youtube.com/@IgrejabatistafontedeaguavivaIb" target="_blank">
         <i class="fab fa-youtube"></i> YouTube
       </a>
       <a href="https://wa.me/5521992415936" target="_blank">
@@ -74,7 +75,9 @@
   <div class="section">
     <div class="formulario">
       <h2><i class="fas fa-envelope"></i> Entre em Contato</h2>
-      <form id="form-contato" action="https://formsubmit.co/igrejabatistafontedeaguavivaib@gmail.com" method="POST">
+      <!-- <form id="form-contato" data-netlify="true" method="POST" action="/">
+        <input type="hidden" name="form-name" value="contato" /> -->
+      <form id="form-contato" data-netlify="true" action="https://formsubmit.co/igrejabatistafontedeaguavivaib@gmail.com" method="POST">
         <input type="text" name="nome" placeholder="Seu nome" required>
         <input type="email" name="email" placeholder="Seu e-mail" required>
         <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
@@ -118,13 +121,15 @@
   <script>
     // Configuração do Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyCX3UouJc1fD5au0pjdlJnExFx9_puw2Rc",
-      authDomain: "ibfav-nilopolis.firebaseapp.com",
-      projectId: "ibfav-nilopolis",
-      storageBucket: "ibfav-nilopolis.firebasestorage.app",
-      messagingSenderId: "225091563911",
-      appId: "1:225091563911:web:3d1e4155003dd19c092322"
+      apiKey: "AIzaSyC0CY0Ds3tARkQFSOAOY8aVMnoFvDbu9Rs",
+      authDomain: "ibfav-c9d00.firebaseapp.com",
+      projectId: "ibfav-c9d00",
+      storageBucket: "ibfav-c9d00.firebasestorage.app",
+      messagingSenderId: "666092929823",
+      appId: "1:666092929823:web:c17194e606d41da397662a"
     };
+
+
 
     // Inicializar Firebase
     const app = firebase.initializeApp(firebaseConfig);
@@ -133,7 +138,7 @@
     // Carregar agenda
     async function loadAgenda() {
       const agendaContainer = document.getElementById('agenda');
-      
+
       try {
         const snapshot = await db.collection('events')
           .where('date', '>=', new Date().toISOString().split('T')[0])
@@ -155,12 +160,12 @@
         }
 
         agendaContainer.innerHTML = '';
-        
+
         snapshot.forEach(doc => {
           const data = doc.data();
           const eventDate = new Date(data.date + 'T' + data.time);
           const isToday = new Date().toDateString() === eventDate.toDateString();
-          
+
           const eventItem = document.createElement('li');
           eventItem.className = 'agenda-item';
           eventItem.innerHTML = `
@@ -191,7 +196,7 @@
     // Carregar galeria
     async function loadGaleria() {
       const galeriaContainer = document.getElementById('galeria');
-      
+
       try {
         const snapshot = await db.collection('photos')
           .orderBy('timestamp', 'desc')
@@ -212,7 +217,7 @@
         }
 
         galeriaContainer.innerHTML = '';
-        
+
         snapshot.forEach(doc => {
           const data = doc.data();
           const img = document.createElement('img');
@@ -245,12 +250,12 @@
     }
 
     // Fechar modal
-    document.querySelector('.close').onclick = function() {
+    document.querySelector('.close').onclick = function () {
       document.getElementById('imageModal').style.display = 'none';
     }
 
     // Fechar modal clicando fora da imagem
-    document.getElementById('imageModal').onclick = function(e) {
+    document.getElementById('imageModal').onclick = function (e) {
       if (e.target === this) {
         this.style.display = 'none';
       }
@@ -262,16 +267,16 @@
     });
 
     // Carregar dados quando a página carregar
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       loadAgenda();
       loadGaleria();
     });
 
     // Efeito de parallax suave no scroll
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset;
       const sections = document.querySelectorAll('.section');
-      
+
       sections.forEach((section, index) => {
         const rate = scrolled * -0.3;
         section.style.transform = `translateY(${rate}px)`;
@@ -280,4 +285,5 @@
   </script>
 
 </body>
+
 </html>
