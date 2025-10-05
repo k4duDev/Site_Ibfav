@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - IBFAV</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Verificar se scripts estão na ordem correta -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js"></script>
 </head>
 
 <body class="admin">
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-church"></i> Painel Administrativo IBFAV</h1>
+            <h1> Painel Administrativo IBFAV</h1>
             <p>Gerencie fotos e eventos da igreja</p>
         </div>
 
@@ -48,7 +52,7 @@
             <!-- Aba de Fotos -->
             <div class="tab-content active" id="photos-tab">
                 <h3><i class="fas fa-camera"></i> Upload de Fotos</h3>
-                
+
                 <form id="photo-form">
                     <div class="form-group">
                         <label>Selecionar Fotos:</label>
@@ -60,12 +64,13 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="photo-description">Descrição:</label>
-                        <textarea id="photo-description" rows="3" placeholder="Descrição das fotos (opcional)"></textarea>
+                        <textarea id="photo-description" rows="3"
+                            placeholder="Descrição das fotos (opcional)"></textarea>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-upload"></i> Enviar Fotos
                     </button>
@@ -83,33 +88,33 @@
             <!-- Aba de Eventos -->
             <div class="tab-content" id="events-tab">
                 <h3><i class="fas fa-plus-circle"></i> Adicionar Evento</h3>
-                
+
                 <form id="event-form">
                     <div class="form-group">
                         <label for="event-title">Título do Evento:</label>
                         <input type="text" id="event-title" required placeholder="Ex: Culto de Ensino">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-date">Data:</label>
                         <input type="date" id="event-date" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-time">Horário:</label>
                         <input type="time" id="event-time" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-description">Descrição:</label>
                         <textarea id="event-description" rows="4" placeholder="Descrição do evento"></textarea>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="event-location">Local:</label>
                         <input type="text" id="event-location" placeholder="Local do evento">
                     </div>
-                    
+
                     <button type="submit" class="btn btn-success">
                         <i class="fas fa-calendar-plus"></i> Adicionar Evento
                     </button>
@@ -134,24 +139,34 @@
     <script>
         // Configuração do Firebase (mesma do site principal)
         const firebaseConfig = {
-            apiKey: "AIzaSyCX3UouJc1fD5au0pjdlJnExFx9_puw2Rc",
-            authDomain: "ibfav-nilopolis.firebaseapp.com",
-            projectId: "ibfav-nilopolis",
-            storageBucket: "ibfav-nilopolis.firebasestorage.app",
-            messagingSenderId: "225091563911",
-            appId: "1:225091563911:web:3d1e4155003dd19c092322"
+            apiKey: "AIzaSyC0CY0Ds3tARkQFSOAOY8aVMnoFvDbu9Rs",
+            authDomain: "ibfav-c9d00.firebaseapp.com",
+            projectId: "ibfav-c9d00",
+            storageBucket: "ibfav-c9d00.firebasestorage.app",
+            messagingSenderId: "666092929823",
+            appId: "1:666092929823:web:c17194e606d41da397662a"
         };
 
         // Inicializar Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const storage = firebase.storage();
+
+        let app, db, storage;
+
+        try {
+            // Inicializar Firebase
+            app = firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore();
+            storage = firebase.storage();
+        } catch (error) {}
+
+        // const app = firebase.initializeApp(firebaseConfig);
+        // const db = firebase.firestore();
+        // const storage = firebase.storage();
 
         // Senha de administrador (em produção, use autenticação mais segura)
         const ADMIN_PASSWORD = 'ibfav2025admin';
 
         // Estado da aplicação
-        let isAuthenticated = false;
+        // let isAuthenticated = false;
 
         // Funções de autenticação
         function login() {
@@ -181,7 +196,7 @@
         }
 
         // Verificar autenticação na tecla Enter
-        document.getElementById('admin-password').addEventListener('keypress', function(e) {
+        document.getElementById('admin-password').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 login();
             }
@@ -206,9 +221,9 @@
         }
 
         // Funções de upload de fotos
-        document.getElementById('photo-form').addEventListener('submit', async function(e) {
+        document.getElementById('photo-form').addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const files = document.getElementById('photo-files').files;
             const description = document.getElementById('photo-description').value;
 
@@ -318,7 +333,7 @@
         }
 
         // Funções de eventos
-        document.getElementById('event-form').addEventListener('submit', async function(e) {
+        document.getElementById('event-form').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const title = document.getElementById('event-title').value;
@@ -436,10 +451,10 @@
         }
 
         // Preview de arquivos selecionados
-        document.getElementById('photo-files').addEventListener('change', function(e) {
+        document.getElementById('photo-files').addEventListener('change', function (e) {
             const files = e.target.files;
             const label = document.querySelector('.file-upload-label');
-            
+
             if (files.length > 0) {
                 label.innerHTML = `<i class="fas fa-check-circle" style="color: #00b894; font-size: 2rem; margin-right: 10px;"></i>${files.length} foto(s) selecionada(s)`;
             } else {
@@ -448,4 +463,5 @@
         });
     </script>
 </body>
+
 </html>
