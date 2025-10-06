@@ -32,6 +32,9 @@
             <div id="login-error" class="error-message" style="display: none;">
                 Senha incorreta. Tente novamente.
             </div>
+            <button class="logout-btn" onclick="voltarPagina()">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
         </div>
 
         <!-- Painel Administrativo -->
@@ -142,7 +145,8 @@
             apiKey: "AIzaSyC0CY0Ds3tARkQFSOAOY8aVMnoFvDbu9Rs",
             authDomain: "ibfav-c9d00.firebaseapp.com",
             projectId: "ibfav-c9d00",
-            storageBucket: "ibfav-c9d00.firebasestorage.app",
+            // storageBucket: "ibfav-c9d00.firebasestorage.app",
+            storageBucket: "ibfav-c9d00.appspot.com",
             messagingSenderId: "666092929823",
             appId: "1:666092929823:web:c17194e606d41da397662a"
         };
@@ -156,7 +160,9 @@
             app = firebase.initializeApp(firebaseConfig);
             db = firebase.firestore();
             storage = firebase.storage();
-        } catch (error) {}
+        } catch (error) {
+            console.error("Erro ao inicializar Firebase:", error);
+        }
 
         // const app = firebase.initializeApp(firebaseConfig);
         // const db = firebase.firestore();
@@ -193,6 +199,11 @@
             document.getElementById('auth-section').style.display = 'block';
             document.getElementById('admin-panel').style.display = 'none';
             document.getElementById('admin-password').value = '';
+        }
+
+        //Função de voltar home
+        function voltarPagina() {
+            history.back();
         }
 
         // Verificar autenticação na tecla Enter
