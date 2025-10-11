@@ -32,36 +32,35 @@
     font-family: "Poppins", sans-serif;
     background: url("/img/logo_ibfav_fundo_branco3D.png") no-repeat center center fixed;
     background-size: contain;
-    background-color: white;
-    color: black; /* texto branco para contraste */
-    line-height: 1.6;
+    /* background-color: white; */
+    color: black;     /* texto branco para contraste */
+    /* line-height: 1.6; */
 }
 
 
 .index {
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
     /* background: linear-gradient(135deg, #1e3c72, #2a5298); */
     /* color: white; */
-    /* background: write(135deg, #1e3c72, #2a5298);
-    color: black; */
+    /* background: write(135deg, #1e3c72, #2a5298); */
     line-height: 1.6;
     overflow-x: hidden;
 
     .header {
         text-align: center;
         padding: 40px 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        /* background: rgba(255, 255, 255, 0.1); */
+        /* backdrop-filter: blur(10px); */
         border-radius: 20px;
         margin: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); */
         
     }
 
     /* ===================== HEADER / OVERLAY ===================== */
     .overlay {
-        background-color: rgba(0, 0, 0, 0.5);
+        /* background-color: rgba(0, 0, 0, 0.5); */
         padding: 40px 20px;
         border-radius: 12px;
         text-align: center;
@@ -75,17 +74,17 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     .section {
         margin: 40px auto;
         max-width: 1200px;
         padding: 30px;
-        background: rgba(255, 255, 255, 0.1);
+        /* background: rgba(255, 255, 255, 0.1); */
         backdrop-filter: blur(10px);
         border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); */
     }
 
     .section h2 {
@@ -142,7 +141,7 @@
         display: inline-flex;
         align-items: center;
         padding: 12px 20px;
-        /* background: linear-gradient(45deg, #667eea, #764ba2); */
+        background: linear-gradient(45deg, #667eea, #764ba2);
         background: rgba(255, 255, 255, 0.1);
         color: black;
         text-decoration: none;
@@ -238,7 +237,7 @@
     .formulario input:focus,
     .formulario textarea:focus {
         outline: none;
-        box-shadow: 0 0 20px rgba(255, 203, 87, 0.5);
+        /* box-shadow: 0 0 20px rgba(255, 203, 87, 0.5); */
         transform: translateY(-2px);
     }
 
@@ -261,19 +260,19 @@
         margin-top: 50px;
         text-align: center;
         padding: 30px;
-        background: rgba(0, 0, 0, 0.3);
+        /* background: rgba(0, 0, 0, 0.3); */
         border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .loading {
         text-align: center;
         padding: 40px;
-        color: #47ad5f;
+        color: #0a0b0a;
     }
 
     .spinner {
         border: 4px solid rgba(255, 255, 255, 0.1);
-        border-top: 4px solid #feca57;
+        border-top: 4px solid #2706af;
         border-radius: 50%;
         width: 50px;
         height: 50px;
@@ -313,14 +312,14 @@
         padding: 15px;
         border-radius: 50%;
         text-decoration: none;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
         transition: all 0.3s;
         z-index: 1000;
     }
 
     .admin-link:hover {
         transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); */
     }
 
     /* Modal para visualizar imagens */
